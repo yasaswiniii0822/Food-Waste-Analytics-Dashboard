@@ -2,9 +2,8 @@ import streamlit as st
 import mysql.connector
 import pandas as pd
 
-# DB CONNECTION
 conn = mysql.connector.connect(
-    host="localhost",   # IMPORTANT change
+    host="localhost",  
     user="root",
     password="",        # try empty first
     database="food_waste_db"

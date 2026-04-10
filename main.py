@@ -1,6 +1,5 @@
 import mysql.connector
 
-# DB CONNECTION
 conn = mysql.connector.connect(
     host="127.0.0.1",
     user="root",
@@ -10,9 +9,6 @@ conn = mysql.connector.connect(
 )
 
 cursor = conn.cursor()
-
-
-# ---------------- FUNCTIONS ---------------- #
 
 def add_food():
     name = input("Food name: ")
@@ -69,9 +65,6 @@ def show_alerts():
     for row in results:
         print(row)
 
-
-# 🔥 ANALYTICS (THIS IS YOUR EDGE)
-
 def highest_waste_day():
     cursor.execute("""
         SELECT date, SUM(waste_quantity) AS total_waste
@@ -96,9 +89,6 @@ def most_wasted_item():
     print("\n📊 Most Wasted Items:")
     for row in cursor.fetchall():
         print(row)
-
-
-# ---------------- MENU ---------------- #
 
 while True:
     print("\n===== FOOD WASTE SYSTEM =====")
