@@ -19,7 +19,7 @@ def add_food():
         (name, category)
     )
     conn.commit()
-    print("✅ Food added!")
+    print("Food added!")
 
 
 def add_preparation():
@@ -32,7 +32,7 @@ def add_preparation():
         (item_id, date, qty)
     )
     conn.commit()
-    print("✅ Preparation added!")
+    print(" Preparation added!")
 
 
 def add_consumption():
@@ -45,7 +45,7 @@ def add_consumption():
         (item_id, date, qty)
     )
     conn.commit()
-    print("🔥 Consumption added (trigger executed)")
+    print(" Consumption added (trigger executed)")
 
 
 def show_waste():
@@ -73,7 +73,7 @@ def highest_waste_day():
         ORDER BY total_waste DESC
         LIMIT 1
     """)
-    print("\n📊 Highest Waste Day:")
+    print("\n Highest Waste Day:")
     for row in cursor.fetchall():
         print(row)
 
@@ -86,7 +86,7 @@ def most_wasted_item():
         GROUP BY f.item_name
         ORDER BY waste DESC
     """)
-    print("\n📊 Most Wasted Items:")
+    print("\n Most Wasted Items:")
     for row in cursor.fetchall():
         print(row)
 
