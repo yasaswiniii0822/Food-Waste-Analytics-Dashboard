@@ -5,14 +5,14 @@ import pandas as pd
 conn = mysql.connector.connect(
     host="localhost",  
     user="root",
-    password="",        # try empty first
+    password="",       
     database="food_waste_db"
 )
 cursor = conn.cursor()
 
 st.title("🍽️ Food Waste Analytics Dashboard")
 
-# ---------------- ADD FOOD ----------------
+
 st.header("Add Food Item")
 name = st.text_input("Food Name")
 category = st.text_input("Category")
@@ -25,7 +25,7 @@ if st.button("Add Food"):
     conn.commit()
     st.success("Food added successfully!")
 
-# ---------------- PREPARATION ----------------
+
 st.header("Add Preparation")
 item_id = st.number_input("Item ID (Preparation)", min_value=1)
 date = st.date_input("Date (Preparation)")
@@ -39,7 +39,7 @@ if st.button("Add Preparation"):
     conn.commit()
     st.success("Preparation added!")
 
-# ---------------- CONSUMPTION ----------------
+
 st.header("Add Consumption")
 item_id_c = st.number_input("Item ID (Consumption)", min_value=1, key="c")
 date_c = st.date_input("Date (Consumption)", key="d")
@@ -61,7 +61,7 @@ if st.button("Show Waste Log"):
     df = pd.DataFrame(data, columns=["ID", "Item ID", "Date", "Waste"])
     st.dataframe(df)
 
-# ---------------- ALERTS ----------------
+
 st.header("Alerts")
 if st.button("Show Alerts"):
     cursor.execute("SELECT * FROM alerts")
@@ -69,7 +69,7 @@ if st.button("Show Alerts"):
     df = pd.DataFrame(data, columns=["ID", "Item ID", "Date", "Message"])
     st.dataframe(df)
 
-# ---------------- ANALYTICS ----------------
+
 st.header("Analytics")
 
 if st.button("Highest Waste Day"):
